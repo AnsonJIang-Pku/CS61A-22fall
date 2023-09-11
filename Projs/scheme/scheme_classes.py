@@ -60,6 +60,15 @@ class Frame:
             raise SchemeError('Incorrect number of arguments to function call')
         # BEGIN PROBLEM 8
         "*** YOUR CODE HERE ***"
+        new_env = Frame(self)
+        _formals, _vals = formals, vals
+        while True:
+            if _formals is nil:
+                break
+            symbol, val = _formals.first, _vals.first
+            new_env.define(symbol, val)
+            _formals, _vals = _formals.rest, _vals.rest
+        return new_env
         # END PROBLEM 8
 
 ##############
